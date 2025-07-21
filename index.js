@@ -2,6 +2,7 @@
 const express = require("express");
 // const fetch = require("node-fetch");
 const cors = require("cors");
+const serverless = require('serverless-http');
 
 const app = express();
 
@@ -32,6 +33,8 @@ app.get("/api/google-reviews", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Backend running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Backend running on http://localhost:${PORT}`);
+// });
+
+module.exports.handler = serverless(app);
